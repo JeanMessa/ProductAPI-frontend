@@ -2,17 +2,17 @@
     <div class="logo-wraper">
         <img src="assets/logo.png">
     </div>
-    <form class="login-form">
+    <form class="login-form" [formGroup]="loginForm">
         <div>
             <label for="username" class="form-label">Usuário</label>
-            <input type="text" name="username" class="form-control">
+            <input type="text" name="username" class="form-control" formControlName="username">
         </div>
         <div>
             <label for="password" class="form-label">Senha</label>
-            <input type="password" name="senha" class="form-control">
+            <input type="password" name="senha" class="form-control" formControlName="password">
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <button type="submit" (click)="submit()" [disabled]="!loginForm.valid" class="btn btn-primary">Entrar</button>
         </div>
     </form>
     <footer>
