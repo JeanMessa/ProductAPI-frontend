@@ -1,0 +1,27 @@
+@use "../../../styles/variables" as v;
+
+.table{
+
+    border: solid 1px;
+
+    th{
+        background-color: v.$secondary-color;
+        color: #fff;
+    }
+
+    td{
+        vertical-align: middle;
+    }
+
+    .actions-wraper{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10%;
+    }
+
+    @media(max-width:513px) {
+        .actions-wraper{
+            flex-direction: column;
+        }
+    }
+}
