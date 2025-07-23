@@ -12,7 +12,6 @@ export class ProductService {
   constructor(private httpClient:HttpClient){}
   
   getAll(){    
-      console.log("teste");
     return this.httpClient.get<Product[]>(this.APIURL);
   }
 
