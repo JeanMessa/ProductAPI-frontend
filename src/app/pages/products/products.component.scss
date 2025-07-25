@@ -1,5 +1,11 @@
 @use "../../../styles/variables" as v;
 
+.filter-wraper{
+    input{
+        border-color: #000;
+    }
+}
+
 .table{
 
     border: solid 1px;
