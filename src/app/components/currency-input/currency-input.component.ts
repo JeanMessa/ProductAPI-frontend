@@ -45,7 +45,10 @@ export class CurrencyInputComponent {
   }
 
   public getPrice(){
-    this.priceInt ? this.priceInt : 0;
+    if(this.priceInt == null){
+      this.priceInt = "0";
+    }
+    
     let price:string = this.priceInt + this.priceDecimal;
     price = price.replace(',', '.');    
     return Number(price);
