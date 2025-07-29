@@ -31,4 +31,8 @@ export class ProductService {
     });
   }
 
+  create(product:Product){    
+    return this.httpClient.post<Product>(this.APIURL,product);
+  }
+
 }
