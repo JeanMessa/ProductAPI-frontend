@@ -53,6 +53,11 @@ export class CurrencyInputComponent {
     price = price.replace(',', '.');    
     return Number(price);
   }
+
+  public reset(){
+    this.priceInt = "";
+    this.priceDecimal = ",00"
+  }
      
 
 }
