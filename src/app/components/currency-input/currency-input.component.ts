@@ -58,6 +58,14 @@ export class CurrencyInputComponent {
     this.priceInt = "";
     this.priceDecimal = ",00"
   }
+
+  public setValue(value:number){
+    const integerValue:string = Math.trunc(value).toString();
+    const decimalValue:string = (value.toFixed(2)).replace(integerValue+".","");
+    
+    this.priceInt = integerValue;
+    this.priceDecimal = "," + decimalValue;
+  }
      
 
 }
