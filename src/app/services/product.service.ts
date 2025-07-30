@@ -31,6 +31,10 @@ export class ProductService {
     });
   }
 
+  get(productId:string){    
+    return this.httpClient.get<Product>(this.APIURL+"/"+productId);
+  }
+
   create(product:Product){    
     return this.httpClient.post<Product>(this.APIURL,product);
   }
