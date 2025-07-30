@@ -6,6 +6,7 @@ import { ProductService } from '../../services/product.service';
 import { AsyncPipe, CurrencyPipe} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CurrencyInputComponent } from "../../components/currency-input/currency-input.component";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ProductsComponent implements OnInit{
   @ViewChild('minPrice') minPrice!: CurrencyInputComponent; 
   @ViewChild('maxPrice') maxPrice!: CurrencyInputComponent; 
 
-  constructor(private productService:ProductService){}
+  constructor(private productService:ProductService, private router:Router){}
 
   ngOnInit(): void {    
     this.list();
@@ -33,6 +34,10 @@ export class ProductsComponent implements OnInit{
 
   filter(){
     this.products$ = this.productService.getAllFiltered(this.productName,this.minPrice.getPrice(),this.maxPrice.getPrice()); 
+  }
+
+  edit(productId:string){
+    this.router.navigate(["produtos/editar/"+productId])
   }
 
 }

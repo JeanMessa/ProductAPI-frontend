@@ -39,4 +39,8 @@ export class ProductService {
     return this.httpClient.post<Product>(this.APIURL,product);
   }
 
+  edit(id:string,product:Product){    
+    return this.httpClient.put<Product>(this.APIURL+"/"+id,product);
+  }
+
 }

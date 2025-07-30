@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProductsComponent } from './pages/products/products.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
 export const routes: Routes = [
     {
@@ -31,4 +32,12 @@ export const routes: Routes = [
             requireAdmin: true
         }
     },
+    {
+        path: "produtos/editar/:id",
+        component: EditProductComponent,
+        canActivate: [AuthGuardService],
+        data:{
+            requireAdmin: true
+        }
+    }
 ];
