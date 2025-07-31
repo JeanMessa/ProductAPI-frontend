@@ -7,11 +7,13 @@ import { AsyncPipe, CurrencyPipe} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CurrencyInputComponent } from "../../components/currency-input/currency-input.component";
 import { Router } from '@angular/router';
+import { ConfirmDialogComponent } from "../../components/confirm-dialog/confirm-dialog.component";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-products',
-  imports: [HeaderComponent, AsyncPipe, CurrencyPipe, FormsModule, CurrencyInputComponent],
+  imports: [HeaderComponent, AsyncPipe, CurrencyPipe, FormsModule, CurrencyInputComponent, ConfirmDialogComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -20,9 +22,11 @@ export class ProductsComponent implements OnInit{
   products$! :Observable<Product[]>;
   productName:string = '';
   @ViewChild('minPrice') minPrice!: CurrencyInputComponent; 
-  @ViewChild('maxPrice') maxPrice!: CurrencyInputComponent; 
+  @ViewChild('maxPrice') maxPrice!: CurrencyInputComponent;
+  @ViewChild('deleteDialog') deleteDialog!: ConfirmDialogComponent; 
+  productToDelete:string = ""; 
 
-  constructor(private productService:ProductService, private router:Router){}
+  constructor(private productService:ProductService, private router:Router, private toastService:ToastrService){}
 
   ngOnInit(): void {    
     this.list();
@@ -38,6 +42,24 @@ export class ProductsComponent implements OnInit{
 
   edit(productId:string){
     this.router.navigate(["produtos/editar/"+productId])
+  }
+
+  deleteConfirmation(productId:string,name:string){
+    this.deleteDialog.modalBody = `Tem certeza que deseja excluir o produto ${name}? Essa ação é irreversível.`
+    this.productToDelete = productId;
+  }
+
+  delete(productId:string){
+    console.log(productId);
+    
+    this.productService.delete(productId).subscribe({
+      next: () => {
+        this.toastService.success("Produto excluido com sucesso.")
+        this.filter()
+      },
+      error: () => this.toastService.error("Erro ao excluir.")
+    })
+    
   }
 
 }

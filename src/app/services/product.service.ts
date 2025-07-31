@@ -43,4 +43,8 @@ export class ProductService {
     return this.httpClient.put<Product>(this.APIURL+"/"+id,product);
   }
 
+  delete(id:string){    
+    return this.httpClient.delete(this.APIURL+"/"+id,{ responseType: 'text' });
+  }
+
 }

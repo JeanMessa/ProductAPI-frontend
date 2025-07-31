@@ -34,12 +34,18 @@
                     <td>
                         <div class="actions-wraper">
                             <button class="btn btn-warning" (click)="edit(product.productId)">Editar</button>
-                            <button class="btn btn-danger">Excluir</button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal" (click)="deleteConfirmation(product.productId,product.name)">Excluir</button>
                         </div>     
                     </td>
                 </tr>
             }  
         </tbody>
     </table>
+    <confirm-dialog #deleteDialog
+        [modalTitle]="'Excluir Produto'"
+        confirmText="Excluir"
+        confirmBtnVariant="danger"
+        (confirmEvent)="delete(productToDelete)">
+    </confirm-dialog>
 </div>
 
