@@ -4,6 +4,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { ProductsComponent } from './pages/products/products.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
+import { CreateUserComponent } from './pages/create-user.component/create-user.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,14 @@ export const routes: Routes = [
     {
         path: "produtos/editar/:id",
         component: EditProductComponent,
+        canActivate: [AuthGuardService],
+        data:{
+            requireAdmin: true
+        }
+    },
+    {
+        path: "usuario/cadastro",
+        component: CreateUserComponent,
         canActivate: [AuthGuardService],
         data:{
             requireAdmin: true

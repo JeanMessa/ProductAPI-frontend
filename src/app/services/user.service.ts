@@ -21,4 +21,9 @@ export class UserService {
       })
     );
   }
+
+  register(userData: FormData){
+    return this.httpClient.post(this.APIURL+"/register",userData,{ responseType: 'text' });
+  }
+
 }
