@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -13,12 +13,9 @@ export class HeaderComponent {
   username:string | null = localStorage.getItem('username');
   isAdmin:boolean = localStorage.getItem('role') == "ADMIN";
 
-  constructor(private router:Router){}
+  constructor(private userService:UserService){}
 
   logout(){
-    localStorage.removeItem('auth-token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('role');
-    this.router.navigate(["/login"])
+    this.userService.logout();
   }
 }
