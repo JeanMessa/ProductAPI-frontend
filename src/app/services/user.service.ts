@@ -15,9 +15,9 @@ export class UserService {
   login(username:string,password:string){
     return this.httpClient.post<LoginResponse>(this.APIURL+"/login",{username,password}).pipe(
       tap((value) => {
-        sessionStorage.setItem("auth-token",value.token);
-        sessionStorage.setItem("username",value.username);
-        sessionStorage.setItem("role",value.role);
+        localStorage.setItem("auth-token",value.token);
+        localStorage.setItem("username",value.username);
+        localStorage.setItem("role",value.role);
       })
     );
   }

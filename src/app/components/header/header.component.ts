@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  username:string | null = sessionStorage.getItem('username');
-  isAdmin:boolean = sessionStorage.getItem('role') == "ADMIN";
+  username:string | null = localStorage.getItem('username');
+  isAdmin:boolean = localStorage.getItem('role') == "ADMIN";
 
   constructor(private router:Router){}
 
   logout(){
-    sessionStorage.removeItem('auth-token');
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('role');
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
     this.router.navigate(["/login"])
   }
 }

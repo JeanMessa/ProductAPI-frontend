@@ -14,8 +14,8 @@ export class AuthGuardService implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree{
-    const authToken = sessionStorage.getItem('auth-token');
-    const role = sessionStorage.getItem('role');
+    const authToken = localStorage.getItem('auth-token');
+    const role = localStorage.getItem('role');
     const requireAdmin = route.data['requireAdmin'];
     const requireNotAuthenticated = route.data['requireNotAuthenticated'];
 
