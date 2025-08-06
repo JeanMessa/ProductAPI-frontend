@@ -5,6 +5,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { CreateProductsComponent } from './pages/create-products/create-products.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { CreateUserComponent } from './pages/create-user.component/create-user.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
     {
@@ -48,5 +49,9 @@ export const routes: Routes = [
         data:{
             requireAdmin: true
         }
+    },
+    {
+        path: "**",
+        component: NotFoundComponent
     }
 ];
