@@ -24,7 +24,8 @@ export class ProductsComponent implements OnInit{
   @ViewChild('minPrice') minPrice!: CurrencyInputComponent; 
   @ViewChild('maxPrice') maxPrice!: CurrencyInputComponent;
   @ViewChild('deleteDialog') deleteDialog!: ConfirmDialogComponent; 
-  productToDelete:string = ""; 
+  productToDelete:string = "";
+  isFiltered:boolean = false; 
 
   constructor(private productService:ProductService, private router:Router, private toastService:ToastrService){}
 
@@ -33,11 +34,19 @@ export class ProductsComponent implements OnInit{
   }
 
   list(){
-    this.products$ = this.productService.getAll();    
+    this.products$ = this.productService.getAll();   
+    this.isFiltered = false; 
   }
 
   filter(){
-    this.products$ = this.productService.getAllFiltered(this.productName,this.minPrice.getPrice(),this.maxPrice.getPrice()); 
+    if(this.productName || this.minPrice.getPrice()>0 || this.maxPrice.getPrice()>0){
+      this.products$ = this.productService.getAllFiltered(this.productName,this.minPrice.getPrice(),this.maxPrice.getPrice());
+      this.isFiltered = true;
+    }else{
+      this.list();
+    }
+    console.log(this.isFiltered);
+    
   }
 
   edit(productId:string){
