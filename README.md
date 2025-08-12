@@ -72,4 +72,5 @@ Primeiramente, siga o passo a passo para iniciar o servidor do backend: <a href=
   <li>
     Agora o projeto estará rodando em: <a href="http://localhost:4200/">http://localhost:4200/</a>  
   </li>
+  Dica: Apenas usuários administradores podem criar novas contas, então para o primeiro login use o usuário: "admin" e a senha: "123" (ambos sem as aspas).
 </ol>
