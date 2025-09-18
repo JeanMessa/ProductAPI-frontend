@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { LoginResponse } from '../../types/login-response.type';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly APIURL:string = "http://localhost:8080/user";
+  private readonly APIURL:string = environment.apiUrl + "/user";
 
   constructor(private httpClient:HttpClient,private router:Router){}
   

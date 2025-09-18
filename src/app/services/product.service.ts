@@ -1,13 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../../types/product.type';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private readonly APIURL = "http://localhost:8080/product";
+  private readonly APIURL = environment.apiUrl + "/product";
 
   constructor(private httpClient:HttpClient){}
   
