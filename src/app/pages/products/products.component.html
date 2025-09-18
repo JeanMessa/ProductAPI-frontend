@@ -33,8 +33,8 @@
                         <div class="info-wraper">{{ product.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div></td>
                     <td>
                         <div class="actions-wraper">
-                            <button class="btn btn-warning" (click)="edit(product.productId)">Editar</button>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal" (click)="deleteConfirmation(product.productId,product.name)">Excluir</button>
+                            <button class="btn btn-warning" (click)="edit(product.productId)" [disabled]="role!='ADMIN'" [attr.title]="role !== 'ADMIN' ? 'A edição é permitida apenas para administradores' : null">Editar</button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal" (click)="deleteConfirmation(product.productId,product.name)" [disabled]="role!='ADMIN'" [attr.title]="role !== 'ADMIN' ? 'A exclusão é permitida apenas para administradores' : null">Excluir</button>
                         </div>     
                     </td>
                 </tr>

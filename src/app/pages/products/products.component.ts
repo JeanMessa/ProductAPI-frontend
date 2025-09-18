@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit{
   @ViewChild('deleteDialog') deleteDialog!: ConfirmDialogComponent; 
   productToDelete:string = "";
   isFiltered:boolean = false; 
+  role:string | null = localStorage.getItem("role");
 
   constructor(private productService:ProductService, private router:Router, private toastService:ToastrService){}
 
