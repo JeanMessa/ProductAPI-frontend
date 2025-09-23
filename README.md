@@ -47,6 +47,7 @@ Esse componente possui as propriedades symbol, para escolher o símbolo da moeda
 </p>
 
 <h3>Como testar</h3>
+Teste através do site no Render: https://productapi-frontend.onrender.com, ou teste localmente seguindo o passo a passo:
 Primeiramente, siga o passo a passo para iniciar o servidor do backend: <a href="github.com/JeanMessa/productAPI">github.com/JeanMessa/productAPI</a>, depois siga as instruções a seguir:
 
 <ol>
