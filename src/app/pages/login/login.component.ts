@@ -28,7 +28,13 @@ export class LoginComponent {
   submit(){
     this.userSevice.login(this.loginForm.value.username,this.loginForm.value.password).subscribe({
         next: () => this.router.navigate(["/"]),
-        error: () => this.toastService.error("Usuário ou senha incorreto")
+        error: (error) => {
+          if(error.status==401){
+            this.toastService.error("Usuário ou senha incorreto.");
+          }else{
+            this.toastService.error("Ocorreu um erro no servidor, tente novamente mais tarde.");
+          }
+        }
       }
     );
   }
