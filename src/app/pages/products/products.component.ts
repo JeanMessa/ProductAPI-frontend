@@ -46,8 +46,6 @@ export class ProductsComponent implements OnInit{
     }else{
       this.list();
     }
-    console.log(this.isFiltered);
-    
   }
 
   edit(productId:string){
