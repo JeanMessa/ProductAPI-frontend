@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { ProductFormComponent } from "../../components/product-form/product-form.component";
 import { Product } from '../../../types/product.type';
@@ -17,6 +17,8 @@ export class EditProductComponent implements OnInit{
 
   id:string | null = '';
   product$!: Observable<Product>;
+  @ViewChild("productForm") productForm!: ProductFormComponent;
+
 
   constructor(
     private route:ActivatedRoute,
@@ -39,7 +41,10 @@ export class EditProductComponent implements OnInit{
           this.toastService.success("Edição realizada com sucesso.");
           this.router.navigate(["/"]);
         },
-        error: () => this.toastService.error("Erro ao editar.")
+        error: () => {
+          this.toastService.error("Erro ao editar.")
+          this.productForm.waitingRequest = false
+        },
       }
     );
   }

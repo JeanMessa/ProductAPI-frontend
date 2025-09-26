@@ -22,8 +22,12 @@ export class CreateProductsComponent {
         next: () => {
           this.toastService.success("Cadastro realizado com sucesso.")
           this.productForm.reset();
+          this.productForm.waitingRequest = false
         },
-        error: () => this.toastService.error("Erro ao cadastrar.")
+        error: () => {
+          this.toastService.error("Erro ao cadastrar.")
+          this.productForm.waitingRequest = false
+        }
       }
     );
   }

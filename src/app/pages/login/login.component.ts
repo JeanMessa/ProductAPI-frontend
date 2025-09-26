@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   loginForm!: FormGroup;
+  waitingRequest: boolean = false;
 
   constructor(
     private userSevice:UserService,
@@ -26,6 +27,7 @@ export class LoginComponent {
   }
 
   submit(){
+    this.waitingRequest = true;
     this.userSevice.login(this.loginForm.value.username,this.loginForm.value.password).subscribe({
         next: () => this.router.navigate(["/"]),
         error: (error) => {
@@ -34,6 +36,7 @@ export class LoginComponent {
           }else{
             this.toastService.error("Ocorreu um erro no servidor, tente novamente mais tarde.");
           }
+          this.waitingRequest = false;
         }
       }
     );

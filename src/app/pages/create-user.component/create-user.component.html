@@ -25,7 +25,13 @@
             </div>
             <div class="btn-wraper">
                 <button class="btn btn-danger" type="reset">Limpar</button>
-                <button class="btn btn-primary" [disabled]="!userForm.valid" (click)="create()">Salvar</button>
+                <button class="btn btn-primary" [disabled]="!userForm.valid || waitingRequest" (click)="create()">
+                    @if(!waitingRequest){
+                        Salvar
+                    }@else {
+                        Salvando...
+                    }
+                </button>
             </div>
         </div>
             

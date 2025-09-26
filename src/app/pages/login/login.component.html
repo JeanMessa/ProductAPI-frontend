@@ -12,7 +12,13 @@
             <input type="password" name="senha" class="form-control" formControlName="password">
         </div>
         <div>
-            <button type="submit" (click)="submit()" [disabled]="!loginForm.valid" class="btn btn-primary">Entrar</button>
+            <button type="submit" (click)="submit()" [disabled]="!loginForm.valid || waitingRequest" class="btn btn-primary">
+                @if(!waitingRequest){
+                    Entrar
+                }@else {
+                    Caregando...
+                }
+            </button>
         </div>
     </form>
     <footer>

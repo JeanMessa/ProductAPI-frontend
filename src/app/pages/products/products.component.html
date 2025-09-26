@@ -42,10 +42,14 @@
                 <tr>
                     <td colspan="3">
                         <h3 class="ms-3">
-                            @if (isFiltered) {
-                                Nenhum produto se encaixa nos filtros atuais.
-                            }@else {
-                                Não há nenhum produto cadastrado.
+                            @if (!waitingGetRequest) {
+                                @if (isFiltered) {
+                                    Nenhum produto se encaixa nos filtros atuais.
+                                }@else {
+                                    Não há nenhum produto cadastrado.
+                                }
+                            }@else{
+                                Caregando Produtos...
                             }
                         </h3>
                     </td>

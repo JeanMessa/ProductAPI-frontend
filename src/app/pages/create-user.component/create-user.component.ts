@@ -13,6 +13,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CreateUserComponent {
   userForm!: FormGroup;
+  waitingRequest: boolean = false;
+
 
   constructor(private userService:UserService, private toastService:ToastrService){
     this.userForm = new FormGroup({
@@ -25,6 +27,7 @@ export class CreateUserComponent {
 
   create(){
     if(this.userForm.value.password == this.userForm.value.confirmPassword){
+      this.waitingRequest = true;
       this.userService.register(this.userForm.value).subscribe({
         next: () => {
           this.toastService.success("Usuário cadastrado com sucesso.");
@@ -32,13 +35,15 @@ export class CreateUserComponent {
           this.userForm.patchValue({
             role : ""
           })
+          this.waitingRequest = false;      
         },
         error: (response:HttpErrorResponse) => {
           if(response.error == "This username is already in use."){
             this.toastService.error("Esse nome de usuário já está em uso, tente outro.");
           }else{
             this.toastService.error("Erro ao cadastrar usuário.");
-          }      
+          }
+          this.waitingRequest = false;      
         }
       });
     }else{

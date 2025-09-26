@@ -18,7 +18,8 @@ export class ProductFormComponent implements OnInit{
   @Input() title = '';
   @Input() productEdit$!:Observable<Product>;
   @Output() save = new EventEmitter;
-  @ViewChild("currencyInput") currencyInput!: CurrencyInputComponent; 
+  @ViewChild("currencyInput") currencyInput!: CurrencyInputComponent;
+  waitingRequest: boolean = false; 
   
   constructor(private toastService:ToastrService, private router:Router){
     this.productForm = new FormGroup({
@@ -53,6 +54,7 @@ export class ProductFormComponent implements OnInit{
   }
 
   onSave(){
+    this.waitingRequest = true;
     const name = this.productForm.value.name;
     const price = this.currencyInput.getPrice();    
     this.save.emit({name,price});
