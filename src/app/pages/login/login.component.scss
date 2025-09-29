@@ -2,7 +2,7 @@
 
 .login-page{
     background-color: v.$primary-color;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -34,9 +34,30 @@
     }
 }
 
-footer{
-    flex-grow: 1;
-    background-image: url("/assets/products.png");
+.dev-info{
+    color: white;
+    font-size: 18px;
+
+    .info{
+        margin-bottom: 10px;
+    }
+
+    i{
+        font-size: 25px;
+    }
+
+    a{
+        color: white;
+        
+    }
+
+    a:not(.hint a){
+        font-weight: normal;
+    }
+
+    .hint{
+        font-weight: bold;
+    }
 }
 
 @media(max-width:580px) {
